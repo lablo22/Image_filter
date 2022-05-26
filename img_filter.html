@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images Filter</title>
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #ecf0f1;
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+    .wrapper {
+      background-color: #fff;
+      box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.2);
+      width: 90%;
+      margin: auto;
+      user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1%;
+    }
+    .header {
+      background: linear-gradient(#d8d6d6, #eaebee);
+      width: 100%;
+      height: 8vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header ul {
+      list-style: none;
+    }
+    .header ul li {
+      display: inline-block;
+      padding: 3px 15px;
+      background-color: #0abde3;
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 3px;
+      transition: 0.2s;
+    }
+    .header ul li:hover {
+      background-color: #08acd1;
+    }
+    .header ul li.active {
+      background-color: #00cec9;
+    }
+    .main-content {
+      padding: 10px;
+    }
+    .product {
+      width: 100%;
+      padding: 0 18px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .product img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Image Filter</h1>
+  <div class="wrapper">
+    <div class="header">
+      <ul>
+        <li>All Items</li>
+        <li>Cars</li>
+        <li>Mobiles</li>
+        <li>Computer</li>
+        <li>Tablet</li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      
+      <div class="product">
+        <img src="images/car1.png" data-filter="cars" alt="car">
+        <img src="images/car2.png" data-filter="cars" alt="car">
+        <img src="images/car3.png" data-filter="cars" alt="car">
+        <img src="images/car4.png" data-filter="cars" alt="car">
+        <img src="images/car5.png" data-filter="cars" alt="car">
+
+        <img src="images/mobile1.png" data-filter="mobiles" alt="mobile">
+        <img src="images/mobile2.png" data-filter="mobiles" alt="mobile">
+        <img src="images/mobile3.png" data-filter="mobiles" alt="mobile">
+        <img src="images/mobile4.png" data-filter="mobiles" alt="mobile">
+        <img src="images/mobile5.png" data-filter="mobiles" alt="mobile">
+
+        <img src="images/computer1.png" data-filter="computer" alt="computer">
+        <img src="images/computer2.png" data-filter="computer" alt="computer">
+        <img src="images/computer3.png" data-filter="computer" alt="computer">
+        <img src="images/computer4.png" data-filter="computer" alt="computer">
+        <img src="images/computer5.png" data-filter="computer" alt="computer">
+
+        <img src="images/tab1.png" data-filter="tablet" alt="tablet">
+        <img src="images/tab2.png" data-filter="tablet" alt="tablet">
+        <img src="images/tab3.png" data-filter="tablet" alt="tablet">
+        <img src="images/tab4.png" data-filter="tablet" alt="tablet">
+        <img src="images/tab5.png" data-filter="tablet" alt="tablet">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const liItem = document.querySelectorAll('ul li');
+    const imgItem = document.querySelectorAll('.product img');
+
+    liItem.forEach(li => 
+    {
+      li.onclick = function(){
+        
+        liItem.forEach(li => {
+          li.className = '';
+        });
+        li.className = 'active';
+
+        const value = li.textContent;
+        imgItem.forEach(img => {
+          img.style.display = 'none';
+          if(img.getAttribute('data-filter') == value.toLowerCase() || value == 'All Items')
+          {
+              img.style.display = 'block';
+          }
+        });
+
+      }
+    });
+
+  </script>
+
+</body>
+</html>
